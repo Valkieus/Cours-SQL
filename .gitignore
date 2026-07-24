@@ -1,0 +1,9 @@
+# Secrets
+.env
+
+# Sauvegardes générées (contenu binaire, pas versionné)
+backups/*.bak
+!backups/.gitkeep
+
+# Divers
+*.log

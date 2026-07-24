@@ -1,0 +1,21 @@
+services:
+  sqlserver:
+    container_name: lab-sqlserver
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    user: root
+    env_file:
+      - .env
+    ports:
+      - "10.94.211.43:1433:1433"
+    volumes:
+      - mssql-data:/var/opt/mssql/data #mdf #ndf
+      - mssql-log:/var/opt/mssql/log #.log
+      - mssql-secrets:/var/opt/mssql/secrets
+      - ./backups:/backups
+      - ./sql:/sql:ro
+    restart: unless-stopped
+
+volumes:
+  mssql-data:
+  mssql-log:
+  mssql-secrets:
